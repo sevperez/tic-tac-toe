@@ -1,0 +1,127 @@
+/*
+  ********************
+  Page Setup
+  ********************
+*/
+
+html,
+body,
+#root,
+.page-wrapper {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+.push {
+  height: 50px;
+}
+
+nav {
+  background-color: #DB5461;
+  color: #34403A;
+}
+
+.page-footer {
+  background-color: #DB5461;
+  color: #34403A;
+  width: 100%;
+  min-height: 50px;
+  line-height: 50px;
+  
+}
+
+/*
+  ********************
+  Components
+  ********************
+*/
+
+#game-area {
+  width: 400px;
+  margin: 0 auto;
+}
+
+/* Board */
+
+#board {
+  border: 2px solid #4F6D7A;
+  border-radius: 5px;
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+#board .row {
+  height: 33.333%;
+  border-bottom: 2px solid #4F6D7A;
+}
+
+#board .row:last-of-type {
+  border-bottom: none;
+}
+
+.square {
+  text-align: center;
+  font-size: 50px;
+  border-right: 2px solid #4F6D7A;
+}
+
+.square:last-child {
+  border-right: none;
+}
+
+.square span {
+  display: block;
+  padding-top: 15px;
+}
+
+/* History */
+
+#history {
+  width: 400px;
+  margin: 0 auto;
+}
+
+#history .header {
+  border-bottom: 1px solid #4F6D7A;
+}
+
+#history .list-group-item {
+  border: none;
+}
+
+#history .list-group-item .primary-badge {
+  width: 100px;
+}
+
+/* Buttons */
+
+.primary-btn {
+  background-color: #004777;
+  color: #ffffff;
+}
+
+.primary-btn:hover {
+  background-color: #037cce;
+}
+
+.danger-btn-outline {
+  color: #DB5461;
+  font-weight: bold;
+}
+
+.danger-btn-outline:hover {
+  background-color: #DB5461;
+  color: #ffffff;
+}
+
+/* Badges */
+
+.primary-badge {
+  background-color: #004777;
+  color: #ffffff;
+}

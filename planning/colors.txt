@@ -1,0 +1,17 @@
+Payne's Gray:
+#4F6D7A
+
+Dark Terra Cotta:
+#DB5461
+
+Dark Cerulean:
+#004777
+
+Deep Green-Cyan Turqoise:
+#136F63
+
+Onyx:
+#34403A
+
+Dark Gunmetal:
+#1F2823
