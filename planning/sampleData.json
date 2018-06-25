@@ -1,0 +1,25 @@
+{
+  "games": {
+    "game1": {
+      "winner": null,
+      "startDateTime": "2018-06-25T01:16:00.478Z",
+      "finishDateTime": null,
+      "numRounds": 3,
+      "nextPlayer": "human",
+      "humanToken": "X",
+      "computerToken": "O",
+      "rounds": [
+        {
+          "winner": null,
+          "board": [[null, null, null],[null, null, null],[null, null, null]]
+        }, {
+          "winner": null,
+          "board": [[null, null, null],[null, null, null],[null, null, null]]
+        }, {
+          "winner": null,
+          "board": [[null, null, null],[null, null, null],[null, null, null]]
+        }
+      ]
+    }
+  }
+}
