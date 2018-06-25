@@ -20,10 +20,18 @@ body,
   height: 50px;
 }
 
+/* Nav */
+
 nav {
   background-color: #DB5461;
   color: #34403A;
 }
+
+.navbar .logo {
+  height: 40px;
+}
+
+/* Footer */
 
 .page-footer {
   background-color: #DB5461;
