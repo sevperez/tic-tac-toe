@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous" />
     <link rel="stylesheet" href="design.css" />
@@ -25,14 +26,20 @@
             <form class="mb-4">
               <div class="row">
                 <div class="form-group col-sm-4">
-                  <label for="firstPlayer">First Player</label>
+                  <label for="firstPlayer">
+                    <i class="fa fa-user mr-2" aria-hidden="true"></i>
+                    First Player
+                  </label>
                   <select class="form-control" name="firstPlayer">
                     <option value="human">Human</option>
                     <option value="computer">Computer</option>
                   </select>
                 </div>
                 <div class="form-group col-sm-4">
-                  <label for="numRounds">Rounds</label>
+                  <label for="numRounds">
+                    <i class="fa fa-refresh mr-2" aria-hidden="true"></i>
+                    Rounds
+                  </label>
                   <select class="form-control" name="numRounds">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -47,11 +54,16 @@
                   </select>
                 </div>
                 <div class="form-group col-sm-4">
-                  <label for="playerToken">Human Token:</label>
+                  <label for="playerToken">
+                    <i class="fa fa-cog mr-2" aria-hidden="true"></i>
+                    Token
+                  </label>
                   <input type="text" class="form-control" id="playerToken" name="playerToken" value="X" minlength="1" maxlength="1" />
                 </div>
               </div>
-              <button type="submit" class="btn btn-block primary-btn">Start</button>
+              <button type="submit" class="btn btn-block primary-btn">
+                Play
+              </button>
             </form>
             <div id="board" class="p-4">
               <div class="row">
@@ -92,7 +104,10 @@
           <div id="history">
             <div class="py-4">
               <div class="header">
-                <h3>Round History</h3>
+                <h3>
+                  <i class="fa fa-history mr-2" aria-hidden="true"></i>
+                  Round History
+                </h3>
               </div>
               <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -111,8 +126,14 @@
             </div>
             <div class="py-4">
               <div class="clearfix header">
-                <h3 class="d-block float-left">Game History</h3>
-                <button type="button" class="btn btn-sm danger-btn-outline float-right">Reset</button>
+                <h3 class="d-block float-left">
+                  <i class="fa fa-history mr-2" aria-hidden="true"></i>
+                  Game History
+                </h3>
+                <button type="button" class="btn btn-sm danger-btn-outline float-right">
+                  <i class="fa fa-trash mr-2" aria-hidden="true"></i>
+                  Reset
+                </button>
               </div>
               <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
