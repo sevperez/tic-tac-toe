@@ -1,5 +1,6 @@
 {
-  "games": {
+  "currentGame": {},
+  "history": {
     "sampleGame1": {
       "winner": "computer",
       "startDateTime": "2018-06-25T01:16:00.478Z",

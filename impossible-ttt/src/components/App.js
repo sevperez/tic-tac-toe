@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import GameArea from "./GameArea";
-import HistoryArea from "./HistoryArea";
+import HistoryArea from "../containers/HistoryArea";
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div className="container py-4">
