@@ -4,11 +4,12 @@ import deepfreeze from "deepfreeze";
 
 import reducer from "../currentGame";
 import { FETCH_CURRENT_GAME_SUCCESS,
-         START_NEW_GAME } from "../../actions/actionTypes";
+         START_NEW_GAME,
+         REGISTER_MOVE } from "../../actions/actionTypes";
 
 describe("currentGame reducer", () => {
   it("should return the initial state", () => {
-    expect(reducer({}, {})).toEqual({});
+    expect(reducer(null, {})).toEqual(null);
   });
   
   it("should return updated state if provided with an action", () => {
@@ -34,7 +35,7 @@ describe("currentGame reducer", () => {
       ]
     };
     
-    const stateBefore = {};
+    const stateBefore = null;
     const action = {
       type: FETCH_CURRENT_GAME_SUCCESS,
       response: sampleCurrentGame,
@@ -56,15 +57,57 @@ describe("currentGame reducer", () => {
       nextPlayer: "human",
       humanToken: "X",
       computerToken: "O",
+      currentSquares: [[null, null, null],[null, null, null],[null, null, null]],
       rounds: []
     };
     
-    const stateBefore = {};
+    const stateBefore = null;
     const action = {
       type: START_NEW_GAME,
       data: newGameData,
     };
     const stateAfter = newGameData;
+    
+    deepfreeze(stateBefore);
+    deepfreeze(stateAfter);
+    
+    expect(reducer(stateBefore, action)).toEqual(stateAfter);
+  });
+  
+  it("should register a new move with provided data", () => {
+    const moveData = {
+      token: "X",
+      location: [2, 2],
+    };
+    
+    const stateBefore = {
+      winner: null,
+      startDateTime: "2018-06-25T01:16:00.478Z",
+      finishDateTime: null,
+      numRounds: 3,
+      nextPlayer: "human",
+      humanToken: "X",
+      computerToken: "O",
+      currentSquares: [[null, null, null],[null, null, null],[null, null, null]],
+      rounds: []
+    };
+    
+    const action = {
+      type: REGISTER_MOVE,
+      data: moveData,
+    };
+    
+    const stateAfter = {
+      winner: null,
+      startDateTime: "2018-06-25T01:16:00.478Z",
+      finishDateTime: null,
+      numRounds: 3,
+      nextPlayer: "computer",
+      humanToken: "X",
+      computerToken: "O",
+      currentSquares: [[null, null, null],[null, null, null],[null, null, "X"]],
+      rounds: []
+    };
     
     deepfreeze(stateBefore);
     deepfreeze(stateAfter);

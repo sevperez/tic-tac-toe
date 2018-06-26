@@ -67,9 +67,34 @@ describe("actions", () => {
   });
   
   it("should create an action to start a new game", () => {
+    const newGameData = {
+      winner: null,
+      startDateTime: "2018-06-25T01:16:00.478Z",
+      finishDateTime: null,
+      numRounds: 3,
+      nextPlayer: "human",
+      humanToken: "X",
+      computerToken: "O",
+      rounds: []
+    };
+    
     const expectedAction = {
       type: types.START_NEW_GAME,
+      data: newGameData,
     };
-    expect(actions.startNewGame()).toEqual(expectedAction);
+    expect(actions.startNewGame(newGameData)).toEqual(expectedAction);
+  });
+  
+  it("should create an action to register a move", () => {
+    const moveData = {
+      token: "X",
+      location: [2, 2],
+    };
+    
+    const expectedAction = {
+      type: types.REGISTER_MOVE,
+      data: moveData,
+    };
+    expect(actions.registerMove(moveData)).toEqual(expectedAction);
   });
 });

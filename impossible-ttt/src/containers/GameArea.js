@@ -1,24 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import GameInfo from "../components/GameInfo";
 import NewGameForm from "./NewGameForm";
-import Board from "../containers/Board";
+import Board from "./Board";
 
 const mapStateToProps = (state) => ({
   currentGame: state.currentGame,
 });
 
-export const GameArea = (props) => {
-  return (
-    <div id="game-area" className="py-4">
-      { !!props.currentGame
-        ? <p>Game in progress</p>
-        : <NewGameForm />
-      }
-      <Board />
-    </div>
-  );
-};
+export class GameArea extends Component {
+  render() {
+    return (
+      <div id="game-area" className="py-4">
+        { !!this.props.currentGame
+          ? <GameInfo currentGame={this.props.currentGame} />
+          : <NewGameForm />
+        }
+        <Board />
+      </div>
+    );
+  }
+}
 
 export default connect(mapStateToProps)(GameArea);
 

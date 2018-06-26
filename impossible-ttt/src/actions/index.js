@@ -4,7 +4,8 @@ import * as api from "../api";
 
 import { FETCH_HISTORY_SUCCESS,
          FETCH_CURRENT_GAME_SUCCESS,
-         START_NEW_GAME } from "./actionTypes";
+         START_NEW_GAME,
+         REGISTER_MOVE } from "./actionTypes";
 
 export const receiveHistory = (response) => ({
   type: FETCH_HISTORY_SUCCESS,
@@ -18,6 +19,11 @@ export const receiveCurrentGame = (response) => ({
 
 export const startNewGame = (data) => ({
   type: START_NEW_GAME,
+  data,
+});
+
+export const registerMove = (data) => ({
+  type: REGISTER_MOVE,
   data,
 });
 
