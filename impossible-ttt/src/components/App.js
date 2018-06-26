@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GameArea from "./GameArea";
-import HistoryArea from "../containers/HistoryArea";
+import HistoryArea from "./HistoryArea";
 
 export class App extends Component {
   render() {

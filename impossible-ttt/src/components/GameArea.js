@@ -1,6 +1,6 @@
 import React from "react";
 import NewGameForm from "./NewGameForm";
-import Board from "./Board";
+import Board from "../containers/Board";
 
 const GameArea = () => {
   return (

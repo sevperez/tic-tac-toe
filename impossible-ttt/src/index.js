@@ -19,7 +19,7 @@ console.log(store.getState());                // TEMP TEMP TEMP
 
 ReactDOM.render(
   <Provider store={store}>
-    <Root store={store}/>
+    <Root/>
   </Provider>,
   document.getElementById('root')
 );
