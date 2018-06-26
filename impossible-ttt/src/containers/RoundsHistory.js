@@ -5,10 +5,12 @@ import { connect } from "react-redux";
 import HistoryItem from "../components/HistoryItem";
 
 const mapStateToProps = (state) => ({
-  history: state.currentGame.rounds,
+  history: state.currentGame && state.currentGame.rounds,
 });
 
 export const RoundsHistory = (props) => {
+  const { history } = props;
+  
   return (
     <div className="py-4">
       <div className="header">
@@ -17,15 +19,18 @@ export const RoundsHistory = (props) => {
           Round History
         </h3>
       </div>
-      <ul className="list-group">
-        {props.history.map((round, idx) => (
-          <HistoryItem
-            key={idx}
-            position={idx}
-            winner={round.winner}
-          />
-        ))}
-      </ul>
+        { !!history 
+          ? <ul className="list-group">
+              {history.map((round, idx) => (
+                <HistoryItem
+                  key={idx}
+                  position={idx}
+                  winner={round.winner}
+                />
+              ))}
+            </ul>
+          : <p>No history yet...</p>
+        }
     </div>
   );
 };

@@ -65,4 +65,11 @@ describe("actions", () => {
     };
     expect(actions.receiveCurrentGame(response)).toEqual(expectedAction);
   });
+  
+  it("should create an action to start a new game", () => {
+    const expectedAction = {
+      type: types.START_NEW_GAME,
+    };
+    expect(actions.startNewGame()).toEqual(expectedAction);
+  });
 });

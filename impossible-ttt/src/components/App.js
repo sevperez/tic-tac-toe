@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GameArea from "./GameArea";
+import GameArea from "../containers/GameArea";
 import HistoryArea from "./HistoryArea";
 
 export class App extends Component {

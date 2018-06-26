@@ -6,10 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 import './styles/main.css';
 import Root from './components/Root';
 import configureStore from "./configureStore";
-import { loadState, saveState } from "./localStorage";
+import { saveState } from "./api";
 
-const currentState = loadState();
-const store = configureStore(currentState);
+const store = configureStore();
 
 store.subscribe(() => {
   saveState(store.getState());
