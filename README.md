@@ -32,7 +32,7 @@ The computer AI is designed to ensure that every game results in either a win fo
 1. Check if a winning move for the computer is possible, and if so, take it.
 2. Check if a winning move for the human is possible, and if so, block it.
 3. Check if the center is available, and if so, take it.
-4. Check if an edge needs to be blocked (center is occuped and the human has at least one piece in an edge square, meaning computer should play next to that edge square), and if so, take it.
+4. Check if an edge needs to be blocked (center is occuped, only one corner remains, and the human has at least one piece in an edge square, meaning computer should play next to the human's corner), and if so, take it.
 5. Check if a corner is available, and if so, take one.
 6. Randomly select any available square.
 
