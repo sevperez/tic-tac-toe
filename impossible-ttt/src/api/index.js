@@ -7,7 +7,7 @@ export const fetchHistory = () => {
     if (currentState && currentState.history) {
       resolve(currentState.history);
     } else {
-      resolve(null);
+      resolve({});
     }
   });
 };

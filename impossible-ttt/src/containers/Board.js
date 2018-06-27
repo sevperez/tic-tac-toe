@@ -160,7 +160,7 @@ export class Board extends Component {
         move = humanWin;
       } else if (this.centerAvailable()) {
         move = [1, 1];
-      } else if (edgeBlock) {
+      } else if (availableCorners.length < 2 && edgeBlock) {
         move = edgeBlock;
       } else if (availableCorners.length > 0) {
         move = sample(availableCorners);
