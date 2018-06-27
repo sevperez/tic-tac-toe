@@ -97,4 +97,47 @@ describe("actions", () => {
     };
     expect(actions.registerMove(moveData)).toEqual(expectedAction);
   });
+  
+  it("should create an action to end the round", () => {
+    const roundData = {
+      winner: "computer",
+      board: [["O", null, "X"],["O", "X", null],["O", null, "X"]]
+    };
+    
+    const expectedAction = {
+      type: types.ROUND_OVER,
+      data: roundData,
+    };
+    expect(actions.roundOver(roundData)).toEqual(expectedAction);
+  });
+  
+  it("should create an action to end the game", () => {
+    const gameData = {
+      winner: "computer",
+      startDateTime: "2018-06-25T01:16:00.478Z",
+      finishDateTime: "2018-06-25T02:16:00.478Z",
+      numRounds: 3,
+      nextPlayer: "human",
+      humanToken: "X",
+      computerToken: "O",
+      rounds: [
+        {
+          winner: "computer",
+          board: [["O", null, "X"],["O", "X", null],["O", null, "X"]]
+        }, {
+          winner: "computer",
+          board: [["X", "O", "X"],[null, "O", null],[null, "O", "X"]]
+        }, {
+          winner: "computer",
+          board: [["X", "O", null],[null, "O", "X"],[null, "O", null]]
+        }
+      ]
+    };
+    
+    const expectedAction = {
+      type: types.GAME_OVER,
+      data: gameData,
+    };
+    expect(actions.gameOver(gameData)).toEqual(expectedAction);
+  });
 });

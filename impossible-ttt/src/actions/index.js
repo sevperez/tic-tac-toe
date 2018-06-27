@@ -5,7 +5,9 @@ import * as api from "../api";
 import { FETCH_HISTORY_SUCCESS,
          FETCH_CURRENT_GAME_SUCCESS,
          START_NEW_GAME,
-         REGISTER_MOVE } from "./actionTypes";
+         REGISTER_MOVE,
+         ROUND_OVER,
+         GAME_OVER } from "./actionTypes";
 
 export const receiveHistory = (response) => ({
   type: FETCH_HISTORY_SUCCESS,
@@ -25,6 +27,17 @@ export const startNewGame = (data) => ({
 export const registerMove = (data) => ({
   type: REGISTER_MOVE,
   data,
+});
+
+export const roundOver = (data) => ({
+  type: ROUND_OVER,
+  data,
+});
+
+export const gameOver = (data, id) => ({
+  type: GAME_OVER,
+  data,
+  id,
 });
 
 export const fetchHistory = () => (dispatch) => {

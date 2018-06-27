@@ -2,7 +2,9 @@
 
 import { FETCH_CURRENT_GAME_SUCCESS,
          START_NEW_GAME,
-         REGISTER_MOVE } from "../actions/actionTypes";
+         REGISTER_MOVE,
+         ROUND_OVER,
+         GAME_OVER } from "../actions/actionTypes";
 
 const currentGame = (state = null, action) => {
   switch(action.type) {
@@ -32,6 +34,21 @@ const currentGame = (state = null, action) => {
         nextPlayer: state.nextPlayer === "human" ? "computer" : "human",
         currentSquares: newSquares,
       };
+    case ROUND_OVER:
+      let newRounds = [];
+      state.rounds.forEach(function(round) {
+        newRounds.push(round);
+      });
+      newRounds.push(action.data);
+      
+      return {
+        ...state,
+        nextPlayer: state.nextPlayer === "human" ? "computer" : "human",
+        currentSquares: [[null,  null, null],[null,  null, null],[null,  null, null]],
+        rounds: newRounds,
+      };
+    case GAME_OVER:
+      return null;
     default:
       return state;
   }
