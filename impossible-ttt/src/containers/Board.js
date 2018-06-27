@@ -69,11 +69,104 @@ export class Board extends Component {
     return unmarkedSquares;
   }
   
+  centerAvailable() {
+    return this.props.currentGame.currentSquares[1][1] === null;
+  }
+  
+  getAvailableCorners() {
+    const squares = this.props.currentGame.currentSquares;
+    const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
+    let availableCorners = [];
+    
+    corners.forEach(function(corner) {
+      if (squares[corner[0]][corner[1]] === null) {
+        availableCorners.push(corner);
+      }
+    });
+    
+    return availableCorners;
+  }
+  
+  findWinningMove(row, token) {
+    const squares = this.props.currentGame.currentSquares;
+
+    const square1 = squares[row[0][0]][row[0][1]];
+    const square2 = squares[row[1][0]][row[1][1]];
+    const square3 = squares[row[2][0]][row[2][1]];
+    
+    if (square1 === square2 && square3 === null && square1 === token) {
+      return [row[2][0], row[2][1]];
+    } else if (square1 === square3 && square2 === null && square1 === token) {
+      return [row[1][0], row[1][1]];
+    } else if (square2 === square3 && square1 === null && square2 === token) {
+      return [row[0][0], row[0][1]];
+    } else {
+      return null;
+    }
+  }
+  
+  winningSquare(token) {
+    for (let i = 0, len = winningLines.length; i < len; i += 1) {
+      const row = winningLines[i];
+      const winningMove = this.findWinningMove(row, token);
+      
+      if (winningMove) {
+        return winningMove;
+      }
+    }
+    
+    return null;
+  }
+  
+  blockCorner() {
+    const { humanToken } = this.props.currentGame;
+    const squares = this.props.currentGame.currentSquares;
+    
+    let edgeBlock;
+    if (squares[0][0] === humanToken && squares[0][1] === null) {
+      edgeBlock = [0, 1];
+    } else if (squares[0][0] === humanToken && squares[1][0] === null) {
+      edgeBlock = [1, 0];
+    } else if (squares[0][2] === humanToken && squares[0][1] === null) {
+      edgeBlock = [0, 1];
+    } else if (squares[0][2] === humanToken && squares[1][2] === null) {
+      edgeBlock = [1, 2];
+    } else if (squares[2][0] === humanToken && squares[2][1] === null) {
+      edgeBlock = [2, 1];
+    } else if (squares[2][0] === humanToken && squares[1][0] === null) {
+      edgeBlock = [1, 0];
+    } else if (squares[2][2] === humanToken && squares[2][1] === null) {
+      edgeBlock = [2, 1];
+    } else if (squares[2][2] === humanToken && squares[1][2] === null) {
+      edgeBlock = [1, 2];
+    }
+    
+    return edgeBlock;
+  }
+  
   computerMove() {
     const unmarkedSquares = this.getUnmarkedSquares();
-    
+    console.log(unmarkedSquares);
     if (unmarkedSquares.length > 0) {
-      const move = sample(unmarkedSquares);
+      const computerWin = this.winningSquare(this.props.currentGame.computerToken);
+      const humanWin = this.winningSquare(this.props.currentGame.humanToken);
+      const availableCorners = this.getAvailableCorners();
+      const edgeBlock = this.blockCorner();
+      
+      let move;
+      if (computerWin) {
+        move = computerWin;
+      } else if (humanWin) {
+        move = humanWin;
+      } else if (this.centerAvailable()) {
+        move = [1, 1];
+      } else if (edgeBlock) {
+        move = edgeBlock;
+      } else if (availableCorners.length > 0) {
+        move = sample(availableCorners);
+      } else {
+        move = sample(unmarkedSquares);
+      }
       
       const moveData = {
         token: this.props.currentGame.computerToken,

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchHistory } from "../actions";
+import { fetchHistory, resetGameHistory } from "../actions";
 import HistoryItem from "../components/HistoryItem";
 
 const mapStateToProps = (state) => ({
@@ -31,7 +31,7 @@ export class GamesHistory extends Component {
           <button
             type="button"
             className="btn btn-sm danger-btn-outline float-right"
-            onClick={() => console.log("resetting history!")}
+            onClick={this.props.resetGameHistory}
           >
             <i className="fa fa-trash mr-2" aria-hidden="true"></i>
             Reset
@@ -56,7 +56,10 @@ export class GamesHistory extends Component {
   }
 }
 
-export default connect(mapStateToProps, { fetchHistory })(GamesHistory);
+export default connect(
+  mapStateToProps,
+  { fetchHistory, resetGameHistory }
+)(GamesHistory);
 
 GamesHistory.propTypes = {
   history: PropTypes.shape({
@@ -77,4 +80,5 @@ GamesHistory.propTypes = {
     winner: PropTypes.string,
   }),
   fetchHistory: PropTypes.func,
+  resetGameHistory: PropTypes.func,
 };

@@ -7,7 +7,8 @@ import { FETCH_HISTORY_SUCCESS,
          START_NEW_GAME,
          REGISTER_MOVE,
          ROUND_OVER,
-         GAME_OVER } from "./actionTypes";
+         GAME_OVER,
+         RESET_GAME_HISTORY } from "./actionTypes";
 
 export const receiveHistory = (response) => ({
   type: FETCH_HISTORY_SUCCESS,
@@ -38,6 +39,10 @@ export const gameOver = (data, id) => ({
   type: GAME_OVER,
   data,
   id,
+});
+
+export const resetGameHistory = () => ({
+  type: RESET_GAME_HISTORY,
 });
 
 export const fetchHistory = () => (dispatch) => {

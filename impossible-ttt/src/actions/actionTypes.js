@@ -6,3 +6,4 @@ export const START_NEW_GAME = "START_NEW_GAME";
 export const REGISTER_MOVE = "REGISTER_MOVE";
 export const ROUND_OVER = "ROUND_OVER";
 export const GAME_OVER = "GAME_OVER";
+export const RESET_GAME_HISTORY = "RESET_GAME_HISTORY";

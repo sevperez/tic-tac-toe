@@ -4,7 +4,8 @@ import deepfreeze from "deepfreeze";
 
 import reducer from "../history";
 import { FETCH_HISTORY_SUCCESS,
-         GAME_OVER } from "../../actions/actionTypes";
+         GAME_OVER,
+         RESET_GAME_HISTORY } from "../../actions/actionTypes";
 
 describe("history reducer", () => {
   it("should return the initial state", () => {
@@ -163,6 +164,43 @@ describe("history reducer", () => {
       type: GAME_OVER,
       data: gameData,
       id: sampleId
+    };
+    
+    deepfreeze(stateBefore);
+    deepfreeze(stateAfter);
+    
+    expect(reducer(stateBefore, action)).toEqual(stateAfter);
+  });
+  
+  it("should reset game history", () => {
+    const stateBefore = {
+      sampleGame1: {
+        winner: "computer",
+        startDateTime: "2018-06-25T01:16:00.478Z",
+        finishDateTime: "2018-06-25T09:26:00.478Z",
+        numRounds: 3,
+        nextPlayer: "human",
+        humanToken: "X",
+        computerToken: "O",
+        rounds: [
+          {
+            winner: "computer",
+            board: [["O", null, "X"],["O", "X", null],["O", null, "X"]]
+          }, {
+            winner: "computer",
+            board: [["X", "O", "X"],[null, "O", null],[null, "O", "X"]]
+          }, {
+            winner: "draw",
+            board: [["O", "O", "X"],["X", "X", "O"],["O", "X", "X"]]
+          }
+        ]
+      }
+    };
+    
+    const stateAfter = {};
+    
+    const action = {
+      type: RESET_GAME_HISTORY,
     };
     
     deepfreeze(stateBefore);

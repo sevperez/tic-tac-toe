@@ -140,4 +140,11 @@ describe("actions", () => {
     };
     expect(actions.gameOver(gameData)).toEqual(expectedAction);
   });
+  
+  it("should create an action to reset game history", () => {
+    const expectedAction = {
+      type: types.RESET_GAME_HISTORY
+    };
+    expect(actions.resetGameHistory()).toEqual(expectedAction);
+  });
 });
