@@ -3,7 +3,7 @@ import App from "./App";
 import Nav from "./Nav";
 import Footer from "./Footer";
 
-class Root extends Component {
+export class Root extends Component {
   render() {
     return (
       <div className="page-wrapper">

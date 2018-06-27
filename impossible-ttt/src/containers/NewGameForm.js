@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { startNewGame } from "../actions";
 
-class NewGameForm extends Component {
+export class NewGameForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,9 +25,30 @@ class NewGameForm extends Component {
     });
   }
   
+  getComputerToken() {
+    if (this.state.playerToken.toLowerCase() === "x") {
+      return "O";
+    } else {
+      return "X";
+    }
+  }
+  
   handleSubmit(e) {
     e.preventDefault();
-    console.log("submitting!");
+    
+    let newGame = {
+      winner: null,
+      startDateTime: new Date().toISOString(),
+      finishDateTime: null,
+      numRounds: Number(this.state.numRounds),
+      nextPlayer: this.state.firstPlayer,
+      humanToken: this.state.playerToken,
+      computerToken: this.getComputerToken(),
+      currentSquares: [[null, null, null], [null, null, null], [null, null, null]],
+      rounds: [],
+    };
+    
+    this.props.startNewGame(newGame);
   }
   
   render() {
@@ -98,4 +121,4 @@ class NewGameForm extends Component {
   }
 }
 
-export default NewGameForm;
+export default connect(null, { startNewGame })(NewGameForm);

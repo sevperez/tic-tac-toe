@@ -2,10 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import Root from "../Root";
+import { Board } from '../Board';
 
 Enzyme.configure({ adapter: new Adapter() })
 
-it("renders without crashing", () => {
-  const root = shallow(<Root />)
+it('renders without crashing', () => {
+  const app = shallow(
+    <Board
+      squares={[]}
+      fetchCurrentGame={() => null}
+    />
+  );
 });

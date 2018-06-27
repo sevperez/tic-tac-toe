@@ -1,9 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from "react-redux";
 import registerServiceWorker from './registerServiceWorker';
 
 import './styles/main.css';
 import Root from './components/Root';
+import configureStore from "./configureStore";
+import { saveState } from "./api";
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+const store = configureStore();
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
+
+console.log(store.getState());                // TEMP TEMP TEMP
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Root/>
+  </Provider>,
+  document.getElementById('root')
+);
 registerServiceWorker();

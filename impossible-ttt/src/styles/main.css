@@ -76,6 +76,7 @@ nav {
   text-align: center;
   font-size: 50px;
   border-right: 2px solid #4F6D7A;
+  cursor: pointer;
 }
 
 .square:last-child {
