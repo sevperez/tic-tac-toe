@@ -7,6 +7,7 @@ const sampleData = {
     nextPlayer: "human",
     humanToken: "X",
     computerToken: "O",
+    currentSquares: [["X", "O", "X"],[null, "O", null],[null, null, null]],
     rounds: [
       {
         winner: "computer",
@@ -14,9 +15,6 @@ const sampleData = {
       }, {
         winner: "computer",
         board: [["X", "O", "X"],[null, "O", null],[null, "O", "X"]]
-      }, {
-        winner: null,
-        board: [[null, null, null],[null, null, null],[null, null, null]]
       }
     ]
   },
