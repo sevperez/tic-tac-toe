@@ -97,7 +97,7 @@ describe("history reducer", () => {
       nextPlayer: "human",
       humanToken: "X",
       computerToken: "O",
-      currentSquares: [["O", null, "X"],["O", "X", null],[null, null, "X"]],
+      currentBoard: [["O", null, "X"],["O", "X", null],[null, null, "X"]],
       rounds: [
         {
           winner: "computer",
@@ -144,7 +144,7 @@ describe("history reducer", () => {
         nextPlayer: "human",
         humanToken: "X",
         computerToken: "O",
-        currentSquares: [["O", null, "X"],["O", "X", null],[null, null, "X"]],
+        currentBoard: [["O", null, "X"],["O", "X", null],[null, null, "X"]],
         rounds: [
           {
             winner: "computer",

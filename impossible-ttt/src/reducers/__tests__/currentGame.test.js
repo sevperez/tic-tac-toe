@@ -59,7 +59,7 @@ describe("currentGame reducer", () => {
       nextPlayer: "human",
       humanToken: "X",
       computerToken: "O",
-      currentSquares: [[null, null, null],[null, null, null],[null, null, null]],
+      currentBoard: [[null, null, null],[null, null, null],[null, null, null]],
       rounds: []
     };
     
@@ -90,7 +90,7 @@ describe("currentGame reducer", () => {
       nextPlayer: "human",
       humanToken: "X",
       computerToken: "O",
-      currentSquares: [[null, null, null],[null, null, null],[null, null, null]],
+      currentBoard: [[null, null, null],[null, null, null],[null, null, null]],
       rounds: []
     };
     
@@ -107,7 +107,7 @@ describe("currentGame reducer", () => {
       nextPlayer: "computer",
       humanToken: "X",
       computerToken: "O",
-      currentSquares: [[null, null, null],[null, null, null],[null, null, "X"]],
+      currentBoard: [[null, null, null],[null, null, null],[null, null, "X"]],
       rounds: []
     };
     
@@ -126,7 +126,7 @@ describe("currentGame reducer", () => {
       nextPlayer: "human",
       humanToken: "X",
       computerToken: "O",
-      currentSquares: [["O", null, "X"],["O", "X", null],[null, null, "X"]],
+      currentBoard: [["O", null, "X"],["O", "X", null],[null, null, "X"]],
       rounds: []
     };
     
@@ -148,7 +148,7 @@ describe("currentGame reducer", () => {
       nextPlayer: "computer",
       humanToken: "X",
       computerToken: "O",
-      currentSquares: [[null, null, null],[null, null, null],[null, null, null]],
+      currentBoard: [[null, null, null],[null, null, null],[null, null, null]],
       rounds: [
         {
           winner: "computer",
@@ -172,7 +172,7 @@ describe("currentGame reducer", () => {
       nextPlayer: "human",
       humanToken: "X",
       computerToken: "O",
-      currentSquares: [["X", "O", null],[null, "O", "X"],[null, "O", null]],
+      currentBoard: [["X", "O", null],[null, "O", "X"],[null, "O", null]],
       rounds: [
         {
           winner: "computer",
@@ -192,7 +192,7 @@ describe("currentGame reducer", () => {
       nextPlayer: "human",
       humanToken: "X",
       computerToken: "O",
-      currentSquares: [["O", null, "X"],["O", "X", null],[null, null, "X"]],
+      currentBoard: [["O", null, "X"],["O", "X", null],[null, null, "X"]],
       rounds: [
         {
           winner: "computer",

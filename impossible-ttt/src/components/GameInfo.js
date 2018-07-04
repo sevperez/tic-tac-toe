@@ -35,7 +35,7 @@ GameInfo.propTypes = {
     nextPlayer: PropTypes.string,
     humanToken: PropTypes.string,
     computerToken: PropTypes.string,
-    currentSquares: PropTypes.arrayOf(
+    currentBoard: PropTypes.arrayOf(
       PropTypes.arrayOf(PropTypes.string)
     ),
   })

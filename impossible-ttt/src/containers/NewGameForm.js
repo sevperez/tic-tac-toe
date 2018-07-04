@@ -44,7 +44,7 @@ export class NewGameForm extends Component {
       nextPlayer: this.state.firstPlayer,
       humanToken: this.state.playerToken,
       computerToken: this.getComputerToken(),
-      currentSquares: [[null, null, null], [null, null, null], [null, null, null]],
+      currentBoard: [[null, null, null], [null, null, null], [null, null, null]],
       rounds: [],
     };
     
