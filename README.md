@@ -27,16 +27,7 @@ A game of impossible tic-tac-toe. For use only if you're OK with never winning. 
 - Game history may be reset using the accompanying "reset" button.
 
 ### Computer AI
-The computer AI is designed to ensure that every game results in either a win for the computer or a draw. In order to achieve this goal, it follows the following steps, in this order:
-
-1. Check if a winning move for the computer is possible, and if so, take it.
-2. Check if a winning move for the human is possible, and if so, block it.
-3. Check if the center is available, and if so, take it.
-4. Check if an edge needs to be blocked (center is occuped, only one corner remains, and the human has at least one piece in an edge square, meaning computer should play next to the human's corner), and if so, take it.
-5. Check if a corner is available, and if so, take one.
-6. Randomly select any available square.
-
-This algorithm is very procedural in nature and will be simplified in the future to take advantage of a more robust solution, such as a minimax algorithm.
+The computer AI is designed to ensure that every game results in either a win for the computer or a draw. In order to achieve this goal, it uses the minimax algorithm to evaluate all potential moves and assign each a positive, negative, or neutral value based on whether the move will result in a computer win, human win, or draw. The computer then chooses a move that will ensure it either wins (ideally) or draws (at worst).
 
 ### Future Tasks
 The current implementation would benefit from several improvements, including the AI algorithm improvement noted above. In addition, next steps include improvement of the UI and overall user experience as well as more options to understand what strategy the computer is using. Currently, the persistence layer is in localStorage; however, the API has been designed so that this could easily be ported to a more permanent and portable database solution.
