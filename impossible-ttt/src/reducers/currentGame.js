@@ -13,7 +13,7 @@ const currentGame = (state = null, action) => {
     case START_NEW_GAME:
       return action.data;
     case REGISTER_MOVE:
-      const newSquares = state.currentSquares.map(function(row, rowIdx) {
+      const newBoard = state.currentBoard.map(function(row, rowIdx) {
         if (rowIdx === action.data.location[0]) {
           const newRow = row.map(function(square, squareIdx) {
             if (squareIdx === action.data.location[1]) {
@@ -32,7 +32,7 @@ const currentGame = (state = null, action) => {
       return {
         ...state,
         nextPlayer: state.nextPlayer === "human" ? "computer" : "human",
-        currentSquares: newSquares,
+        currentBoard: newBoard,
       };
     case ROUND_OVER:
       let newRounds = [];
@@ -44,7 +44,7 @@ const currentGame = (state = null, action) => {
       return {
         ...state,
         nextPlayer: state.nextPlayer === "human" ? "computer" : "human",
-        currentSquares: [[null,  null, null],[null,  null, null],[null,  null, null]],
+        currentBoard: [[null,  null, null],[null,  null, null],[null,  null, null]],
         rounds: newRounds,
       };
     case GAME_OVER:

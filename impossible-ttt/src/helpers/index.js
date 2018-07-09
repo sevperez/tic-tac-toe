@@ -5,7 +5,11 @@ export const formatDate = function(date) {
     return "";
   }
   
-  const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+  const dateOptions = { 
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
   
   if (typeof date === "string") {
     date = new Date(date);

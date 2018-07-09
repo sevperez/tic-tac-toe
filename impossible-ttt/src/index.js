@@ -14,8 +14,6 @@ store.subscribe(() => {
   saveState(store.getState());
 });
 
-console.log(store.getState());                // TEMP TEMP TEMP
-
 ReactDOM.render(
   <Provider store={store}>
     <Root/>
