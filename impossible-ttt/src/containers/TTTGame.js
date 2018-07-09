@@ -5,7 +5,8 @@ import { fetchCurrentGame } from "../actions";
 import { registerMove, roundOver, gameOver } from "../actions";
 import uuidv4 from "uuid/v4";
 
-import Board from "./Board";
+import Board from "../components/Board";
+import ComputerAI from "./ComputerAI";
 
 const mapStateToProps = (state) => ({
   currentGame: state.currentGame,
@@ -23,12 +24,6 @@ const winningLines = [
 ];
 
 export class TTTGame extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.computerMove = this.computerMove.bind(this);
-  }
-  
   componentDidMount() {
     this.fetchData();
   }
@@ -78,11 +73,6 @@ export class TTTGame extends Component {
     
     if (roundStatus) {
       this.handleRoundOver(roundStatus);
-    } else {
-      if (this.props.currentGame && 
-          this.props.currentGame.nextPlayer === "computer") {
-        this.computerMove();
-      }
     }
   }
   
@@ -166,26 +156,6 @@ export class TTTGame extends Component {
     return gameData;
   }
   
-  emptySquares(board) {
-    let empty = [];
-    
-    if (!board) {
-      return empty;
-    }
-    
-    for (let i = 0, numLines = board.length; i < numLines; i += 1) {
-      const line = board[i];
-      
-      for (let j = 0, numSquares = line.length; j < numSquares; j += 1) {
-        if (board[i][j] === null) {
-          empty.push([i, j]);
-        }
-      }
-    }
-    
-    return empty;
-  }
-  
   boardFull(board) {
     for (let i = 0, len = board.length; i < len; i += 1) {
       const line = board[i];
@@ -198,121 +168,6 @@ export class TTTGame extends Component {
     return true;
   }
   
-  makeMove(board, move, token) {
-    return board.map(function(line, lineIdx) {
-      return line.map(function(square, sqIdx) {
-        if (move[0] === lineIdx && move[1] === sqIdx) {
-          return token;
-        } else {
-          return square;
-        }
-      });
-    });
-  }
-  
-  minimax(board, testToken, otherToken, nextToken) {
-    // base condition
-    const winner = this.getWinner(board);
-    
-    if (winner === testToken) {
-      return 10;
-    } else if (winner && winner !== testToken) {
-      return -10;
-    } else if (!winner && this.boardFull(board)) {
-      return 0;
-    }
-    
-    // recursive condition
-    const empty = this.emptySquares(board);
-    const nextBoardStates = empty.map(function(move) {
-      return this.makeMove(board, move, nextToken);
-    }, this);
-    
-    if (nextToken === testToken) {
-      nextToken = otherToken;
-    } else {
-      nextToken = testToken;
-    }
-    
-    const minimaxScores = nextBoardStates.map(function(boardState) {
-      return this.minimax(boardState, testToken, otherToken, nextToken);
-    }, this);
-    
-    const sortedScores = minimaxScores.sort(function(a, b) {
-      return a - b;
-    });
-    
-    if (nextToken === otherToken) {
-      return sortedScores[sortedScores.length - 1];
-    } else {
-      return sortedScores[0];
-    }
-  }
-  
-  getTopMoves(empty, minimaxScores) {
-    let topMoves = [];
-    let topScore = -10;
-    for (let i = 0, len = minimaxScores.length; i < len; i += 1) {
-      const score = minimaxScores[i];
-      
-      if (score === topScore) {
-        topMoves.push(empty[i]);
-      } else if (score > topScore) {
-        topScore = score;
-        topMoves = [empty[i]];
-      }
-    }
-    
-    return topMoves;
-  }
-  
-  bestMove(board, testToken, otherToken, nextToken) {
-    function getRandomInt(max) {
-      return Math.floor(Math.random() * Math.floor(max));
-    }
-  
-    const empty = this.emptySquares(board);
-    
-    const nextBoardStates = empty.map(function(move) {
-      return this.makeMove(board, move, nextToken);
-    }, this);
-    
-    if (nextToken === testToken) {
-      nextToken = otherToken;
-    } else {
-      nextToken = testToken;
-    }
-    
-    const minimaxScores = nextBoardStates.map(function(boardState) {
-      return this.minimax(boardState, testToken, otherToken, nextToken);
-    }, this);
-    
-    const bestMoves = this.getTopMoves(empty, minimaxScores);
-    
-    return bestMoves[getRandomInt(bestMoves.length)];
-  }
-  
-  computerMove() {
-    const { currentBoard,
-            computerToken,
-            humanToken, 
-            nextPlayer }= this.props.currentGame;
-    
-    const nextToken = nextPlayer === "computer" ? computerToken : humanToken;
-    const empty = this.emptySquares(currentBoard);
-
-    if (empty.length > 0) {
-      const move = this.bestMove(currentBoard, computerToken, humanToken, nextToken);
-      
-      const moveData = {
-        token: this.props.currentGame.computerToken,
-        location: move,
-      };
-      console.log(moveData);
-      this.props.registerMove(moveData);
-    }
-  }
-  
   render() {
     let squares = [[null, null, null], [null, null, null], [null, null, null]];
     
@@ -321,9 +176,16 @@ export class TTTGame extends Component {
     }
     
     return (
-      <Board
-        squares={squares}
-      />
+      <div>
+        <ComputerAI
+          winningLines={winningLines}
+          getWinner={this.getWinner.bind(this)}
+          boardFull={this.boardFull.bind(this)}
+        />
+        <Board
+          squares={squares}
+        />
+      </div>
     );
   }
 }

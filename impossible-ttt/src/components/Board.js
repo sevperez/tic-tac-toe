@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Square from "./Square";
+import Square from "../containers/Square";
 
 const Board = (props) => {
   return (
