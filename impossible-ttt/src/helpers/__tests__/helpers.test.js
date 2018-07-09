@@ -9,9 +9,16 @@ describe("helpers", () => {
     });
     
     it("returns a MM dd, yyyyy format date string", () => {
-      const inputDate = "2018-06-25T01:16:00.478Z";
+      let inputDateStr = "2018-06-25T01:16:00.478Z";
+      
+      // adjust inputDateStr with timezone offset in testing environment
+      let inputDate = new Date(inputDateStr);
+      const off = inputDate.getTimezoneOffset();
+      inputDate.setMinutes(inputDate.getMinutes() + inputDate.getTimezoneOffset());
+      inputDateStr = inputDate.toISOString();
+      
       const expectedOutput = "June 25, 2018";
-      expect(helpers.formatDate(inputDate)).toEqual(expectedOutput);
+      expect(helpers.formatDate(inputDateStr)).toEqual(expectedOutput);
     });
   });
 });
