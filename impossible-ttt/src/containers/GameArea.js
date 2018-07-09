@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import GameInfo from "../components/GameInfo";
 import NewGameForm from "./NewGameForm";
-import Board from "./Board";
+import TTTGame from "./TTTGame";
 
 const mapStateToProps = (state) => ({
   currentGame: state.currentGame,
@@ -17,7 +17,7 @@ export class GameArea extends Component {
           ? <GameInfo currentGame={this.props.currentGame} />
           : <NewGameForm />
         }
-        <Board />
+        <TTTGame />
       </div>
     );
   }
