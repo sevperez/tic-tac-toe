@@ -7,5 +7,27 @@ import { Square } from '../Square';
 Enzyme.configure({ adapter: new Adapter() })
 
 it('renders without crashing', () => {
-  const app = shallow(<Square />);
+  const square = shallow(<Square />);
+});
+
+describe("Square methods", () => {
+  it("getCurrentToken returns the humanToken if next player is human", () => {
+    var sq = new Square({
+      nextPlayer: "human",
+      humanToken: "X",
+      computerToken: "O",
+    });
+    
+    expect(sq.getCurrentToken()).toEqual("X");
+  });
+  
+  it("getCurrentToken returns the computerToken if next player is computer", () => {
+    var sq = new Square({
+      nextPlayer: "computer",
+      humanToken: "X",
+      computerToken: "O",
+    });
+    
+    expect(sq.getCurrentToken()).toEqual("O");
+  });
 });

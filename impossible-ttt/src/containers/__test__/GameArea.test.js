@@ -7,5 +7,5 @@ import { GameArea } from '../GameArea';
 Enzyme.configure({ adapter: new Adapter() })
 
 it('renders without crashing', () => {
-  const app = shallow(<GameArea />);
+  const gameArea = shallow(<GameArea />);
 });
