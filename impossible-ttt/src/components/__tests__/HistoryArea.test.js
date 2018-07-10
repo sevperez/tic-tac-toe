@@ -7,5 +7,5 @@ import HistoryArea from '../HistoryArea';
 Enzyme.configure({ adapter: new Adapter() });
 
 it('renders without crashing', () => {
-  const app = shallow(<HistoryArea />);
+  const historyArea = shallow(<HistoryArea />);
 });
