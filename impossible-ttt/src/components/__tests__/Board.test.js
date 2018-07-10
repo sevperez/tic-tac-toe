@@ -7,7 +7,7 @@ import Board from '../Board';
 Enzyme.configure({ adapter: new Adapter() })
 
 it('renders without crashing', () => {
-  const app = shallow(
+  const board = shallow(
     <Board
       squares={[]}
     />

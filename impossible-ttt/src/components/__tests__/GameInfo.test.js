@@ -7,7 +7,7 @@ import GameInfo from '../GameInfo';
 Enzyme.configure({ adapter: new Adapter() });
 
 it('renders without crashing', () => {
-  const app = shallow(
+  const gameInfo = shallow(
     <GameInfo
       currentGame={{nextPlayer: "human", numRounds: 0, humanToken: "X"}}
     />
